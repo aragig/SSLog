@@ -6,31 +6,92 @@
 //
 
 import XCTest
-@testable import SSLog
+@testable import SSLog // SSLogはプロジェクト名に合わせて変更してください
 
-final class SSLogTests: XCTestCase {
+class LogTests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // テスト前に呼ばれる
+        Log.new() // ログファイルを新規作成
+        //Log.enableLog = false
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        // テスト後に呼ばれる
+        // テストが終わったら、ログファイルを削除しても良い
+        guard let url = Log.getFileURL() else { return }
+        try? FileManager.default.removeItem(at: url)
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testLogDebug() throws {
+        // Debugログのテスト
+        Log.d("Debug log test")
+        
+        guard let logContent = Log.load() else {
+            XCTFail("Log file could not be read.")
+            return
         }
+        
+        XCTAssertTrue(logContent.contains("Debug log test"), "Log does not contain expected debug message")
     }
-
+    
+    func testLogInfo() throws {
+        // Infoログのテスト
+        Log.i("Info log test")
+        
+        guard let logContent = Log.load() else {
+            XCTFail("Log file could not be read.")
+            return
+        }
+        
+        XCTAssertTrue(logContent.contains("Info log test"), "Log does not contain expected info message")
+    }
+    
+    func testLogWarning() throws {
+        // Warningログのテスト
+        Log.w("Warning log test")
+        
+        guard let logContent = Log.load() else {
+            XCTFail("Log file could not be read.")
+            return
+        }
+        
+        XCTAssertTrue(logContent.contains("Warning log test"), "Log does not contain expected warning message")
+    }
+    
+    func testLogError() throws {
+        // Errorログのテスト
+        Log.e("Error log test")
+        
+        guard let logContent = Log.load() else {
+            XCTFail("Log file could not be read.")
+            return
+        }
+        
+        XCTAssertTrue(logContent.contains("Error log test"), "Log does not contain expected error message")
+    }
+    
+    func testLogFileCreation() throws {
+        // ファイルが正しく作成されているかのテスト
+        guard let fileURL = Log.getFileURL() else {
+            XCTFail("Log file URL could not be obtained.")
+            return
+        }
+        
+        XCTAssertTrue(FileManager.default.fileExists(atPath: fileURL.path), "Log file does not exist")
+    }
+    
+    func testLogFileAppending() throws {
+        // ログが追記されるかのテスト
+        Log.d("First log entry")
+        Log.i("Second log entry")
+        
+        guard let logContent = Log.load() else {
+            XCTFail("Log file could not be read.")
+            return
+        }
+        
+        XCTAssertTrue(logContent.contains("First log entry"), "Log does not contain first log entry")
+        XCTAssertTrue(logContent.contains("Second log entry"), "Log does not contain second log entry")
+    }
 }
