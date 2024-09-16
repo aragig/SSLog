@@ -49,3 +49,5 @@ class ViewController: UIViewController {
 2024/09/16 14:28:13 [Error] (ViewController.swift:22) viewDidLoad() - Error log test
 ```
 
+Info.plistに以下を設定することで、macOS の Finder からアクセス可能になります。中身を閲覧する際は、一旦 Desktop などへコピーしてから行ってください。
+![](UIFileSharingEnabled.png)

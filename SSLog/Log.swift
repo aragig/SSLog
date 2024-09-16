@@ -37,15 +37,20 @@ public class Log: NSObject {
     }
 
     // 新規作成メソッドをstaticに
+
     public static func new() {
         guard let url = getFileURL() else {
             return
         }
         
+        let fileAttributes: [FileAttributeKey: Any] = [
+            .posixPermissions: 0o644 // 読み取り可能なアクセス権限
+        ]
+        
         if FileManager.default.createFile(
             atPath: url.path,
             contents: "".data(using: .utf8),
-            attributes: nil
+            attributes: fileAttributes
         ) {
             print("ファイルを新規作成しました。")
         } else {

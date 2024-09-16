@@ -16,6 +16,8 @@ class ViewController: UIViewController {
         Log.enableLog = true
         Log.logFileName = "SSLogSampleApp.log"
         
+        Log.deleteLogFile()
+ 
         Log.d("Debug log test")
         Log.i("Info log test")
         Log.w("Warning log test")
@@ -23,7 +25,6 @@ class ViewController: UIViewController {
 
         let logs: String? = Log.load()
         print(logs ?? "")
-//        Log.deleteLogFile()
 
     }
 
