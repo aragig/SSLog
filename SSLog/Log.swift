@@ -86,9 +86,9 @@ public class Log: NSObject {
         let dateStr = formatter.string(from: now)
         
         let fileName = (file as NSString).lastPathComponent // ファイル名のみを抽出
-        let caller = "(\(fileName):\(line)) \(function) - \(message)"
+        let caller = "(\(fileName):\(line)) \(function)"
         
-        let content = "\(dateStr) [\(level.rawValue)] \(caller) \(message)"
+        let content = "\(dateStr) [\(level.rawValue)] \(caller) - \(message)"
         add(content)
     }
     
@@ -127,5 +127,20 @@ public class Log: NSObject {
             print("Error description: \(error.localizedDescription)")
         }
         return nil
+    }
+    
+    // ログファイルを削除するメソッドをstaticに
+    public static func deleteLogFile() {
+        guard let url = getFileURL() else {
+            return
+        }
+
+        do {
+            try FileManager.default.removeItem(at: url)
+            print("ログファイルを削除しました。")
+        } catch {
+            print("Error: ファイル削除に失敗しました。\(url.path)")
+            print("Error description: \(error.localizedDescription)")
+        }
     }
 }

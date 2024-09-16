@@ -9,3 +9,43 @@ target 'xxxx' do
   pod 'SSLog', :git => 'https://github.com/aragig/SSLog.git', :tag => '0.1.0'
 end
 ```
+
+
+```ViewControllser.swift
+import SSLog
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        Log.enableLog = true
+        Log.logFileName = "SSLogSampleApp.log"
+        
+        Log.d("Debug log test")
+        Log.i("Info log test")
+        Log.w("Warning log test")
+        Log.e("Error log test")
+
+        let logs: String? = Log.load()
+        print(logs ?? "")
+        Log.deleteLogFile()
+
+    }
+
+
+}
+
+```
+※ 詳しくはSSLogSampleAppプロジェクトを参考ください。
+
+
+▼ こんな感じでログファイルをローカルドキュメントに保存します。
+
+```log
+2024/09/16 14:28:13 [Debug] (ViewController.swift:19) viewDidLoad() - Debug log test
+2024/09/16 14:28:13 [Info] (ViewController.swift:20) viewDidLoad() - Info log test
+2024/09/16 14:28:13 [Warning] (ViewController.swift:21) viewDidLoad() - Warning log test
+2024/09/16 14:28:13 [Error] (ViewController.swift:22) viewDidLoad() - Error log test
+```
+

@@ -23,6 +23,7 @@ class ViewController: UIViewController {
 
         let logs: String? = Log.load()
         print(logs ?? "")
+//        Log.deleteLogFile()
 
     }
 
