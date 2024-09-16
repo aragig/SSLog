@@ -25,7 +25,8 @@ public class Log: NSObject {
         formatter.dateFormat = "yyyy-MM-dd" // 日付をファイル名に
         let dateString = formatter.string(from: Date())
         let fileName = "log-\(dateString).txt"
-        
+//        print(fileName)
+
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             print("Log dir error")
             return nil
@@ -109,7 +110,8 @@ public class Log: NSObject {
                 try (text + "\n").write(to: url, atomically: true, encoding: .utf8)
             }
         } catch {
-            print("Error: write")
+            print("Error: write to path \(url.path)")
+            print("Error description: \(error.localizedDescription)")
         }
     }
     
@@ -122,7 +124,8 @@ public class Log: NSObject {
         do {
             return try String(contentsOf: url)
         } catch {
-            print("Error: read")
+            print("Error: load at path \(url.path)")
+            print("Error description: \(error.localizedDescription)")
         }
         return nil
     }
