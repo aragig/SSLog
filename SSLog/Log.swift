@@ -17,14 +17,15 @@ public class Log: NSObject {
     }
     
     public static var enableLog: Bool = true
+    public static var logFileName: String = "simplify-swift.log"
 
     // ファイルパスの定義
     // ファイルパスの定義（ファイル名に日付を含める）
     static func getFileURL() -> URL? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd" // 日付をファイル名に
-        let dateString = formatter.string(from: Date())
-        let fileName = "log-\(dateString).txt"
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd" // 日付をファイル名に
+//        let dateString = formatter.string(from: Date())
+        let fileName = logFileName
 //        print(fileName)
 
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
