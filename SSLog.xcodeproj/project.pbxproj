@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5102E4E2C97F59600A036B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5102E4D2C97F59600A036B7 /* AppDelegate.swift */; };
+		E5102E502C97F59600A036B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5102E4F2C97F59600A036B7 /* SceneDelegate.swift */; };
+		E5102E522C97F59600A036B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5102E512C97F59600A036B7 /* ViewController.swift */; };
+		E5102E552C97F59600A036B7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E5102E542C97F59600A036B7 /* Base */; };
+		E5102E572C97F59700A036B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5102E562C97F59700A036B7 /* Assets.xcassets */; };
+		E5102E5A2C97F59700A036B7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E5102E592C97F59700A036B7 /* Base */; };
+		E5102E602C97F69100A036B7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C7358B2C97D65E008F1101 /* Log.swift */; };
 		E5C735762C97D5BB008F1101 /* SSLog.docc in Sources */ = {isa = PBXBuildFile; fileRef = E5C735752C97D5BB008F1101 /* SSLog.docc */; };
 		E5C7357C2C97D5BB008F1101 /* SSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C735712C97D5BB008F1101 /* SSLog.framework */; };
 		E5C735812C97D5BB008F1101 /* SSLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C735802C97D5BB008F1101 /* SSLogTests.swift */; };
@@ -29,6 +36,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E5102E4B2C97F59600A036B7 /* SSLogSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSLogSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5102E4D2C97F59600A036B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E5102E4F2C97F59600A036B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E5102E512C97F59600A036B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E5102E542C97F59600A036B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E5102E562C97F59700A036B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E5102E592C97F59700A036B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E5102E5B2C97F59700A036B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5102E5F2C97F60000A036B7 /* SSLogSampleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSLogSampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		E5C735712C97D5BB008F1101 /* SSLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SSLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C735742C97D5BB008F1101 /* SSLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSLog.h; sourceTree = "<group>"; };
 		E5C735752C97D5BB008F1101 /* SSLog.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SSLog.docc; sourceTree = "<group>"; };
@@ -41,6 +57,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E5102E482C97F59600A036B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5C7356E2C97D5BA008F1101 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -59,6 +82,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E5102E4C2C97F59600A036B7 /* SSLogSampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				E5102E4D2C97F59600A036B7 /* AppDelegate.swift */,
+				E5102E4F2C97F59600A036B7 /* SceneDelegate.swift */,
+				E5102E512C97F59600A036B7 /* ViewController.swift */,
+				E5102E532C97F59600A036B7 /* Main.storyboard */,
+				E5102E562C97F59700A036B7 /* Assets.xcassets */,
+				E5102E582C97F59700A036B7 /* LaunchScreen.storyboard */,
+				E5102E5B2C97F59700A036B7 /* Info.plist */,
+				E5102E5F2C97F60000A036B7 /* SSLogSampleApp-Bridging-Header.h */,
+			);
+			path = SSLogSampleApp;
+			sourceTree = "<group>";
+		};
 		E5C735672C97D5BA008F1101 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +105,7 @@
 				E5C735902C97DF6B008F1101 /* LICENSE */,
 				E5C735732C97D5BB008F1101 /* SSLog */,
 				E5C7357F2C97D5BB008F1101 /* SSLogTests */,
+				E5102E4C2C97F59600A036B7 /* SSLogSampleApp */,
 				E5C735722C97D5BB008F1101 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +115,7 @@
 			children = (
 				E5C735712C97D5BB008F1101 /* SSLog.framework */,
 				E5C7357B2C97D5BB008F1101 /* SSLogTests.xctest */,
+				E5102E4B2C97F59600A036B7 /* SSLogSampleApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +152,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		E5102E4A2C97F59600A036B7 /* SSLogSampleApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5102E5E2C97F59700A036B7 /* Build configuration list for PBXNativeTarget "SSLogSampleApp" */;
+			buildPhases = (
+				E5102E472C97F59600A036B7 /* Sources */,
+				E5102E482C97F59600A036B7 /* Frameworks */,
+				E5102E492C97F59600A036B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SSLogSampleApp;
+			productName = SSLogSampleApp;
+			productReference = E5102E4B2C97F59600A036B7 /* SSLogSampleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 		E5C735702C97D5BA008F1101 /* SSLog */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5C735852C97D5BB008F1101 /* Build configuration list for PBXNativeTarget "SSLog" */;
@@ -158,6 +215,9 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					E5102E4A2C97F59600A036B7 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					E5C735702C97D5BA008F1101 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -181,11 +241,22 @@
 			targets = (
 				E5C735702C97D5BA008F1101 /* SSLog */,
 				E5C7357A2C97D5BB008F1101 /* SSLogTests */,
+				E5102E4A2C97F59600A036B7 /* SSLogSampleApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E5102E492C97F59600A036B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5102E572C97F59700A036B7 /* Assets.xcassets in Resources */,
+				E5102E5A2C97F59700A036B7 /* Base in Resources */,
+				E5102E552C97F59600A036B7 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5C7356F2C97D5BA008F1101 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,6 +277,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E5102E472C97F59600A036B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5102E522C97F59600A036B7 /* ViewController.swift in Sources */,
+				E5102E4E2C97F59600A036B7 /* AppDelegate.swift in Sources */,
+				E5102E602C97F69100A036B7 /* Log.swift in Sources */,
+				E5102E502C97F59600A036B7 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5C7356D2C97D5BA008F1101 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,7 +316,86 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		E5102E532C97F59600A036B7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5102E542C97F59600A036B7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E5102E582C97F59700A036B7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5102E592C97F59700A036B7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		E5102E5C2C97F59700A036B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TNNPKNN4HZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SSLogSampleApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apppppp.SSLogSampleApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SSLogSampleApp/SSLogSampleApp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E5102E5D2C97F59700A036B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TNNPKNN4HZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SSLogSampleApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apppppp.SSLogSampleApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SSLogSampleApp/SSLogSampleApp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E5C735832C97D5BB008F1101 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -483,6 +644,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E5102E5E2C97F59700A036B7 /* Build configuration list for PBXNativeTarget "SSLogSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5102E5C2C97F59700A036B7 /* Debug */,
+				E5102E5D2C97F59700A036B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E5C7356B2C97D5BA008F1101 /* Build configuration list for PBXProject "SSLog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -80,18 +80,16 @@ public class Log: NSObject {
 
     // ログの基本メソッドをstaticに
     static func log(_ level: Level, _ message: String, _ file: String, _ line: Int, _ function: String) {
-        if load() != nil {
-            let now = Date()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-            let dateStr = formatter.string(from: now)
-            
-            let fileName = (file as NSString).lastPathComponent // ファイル名のみを抽出
-            let caller = "[\(level.rawValue)] (\(fileName):\(line)) \(function) - \(message)"
-            
-            let content = "\(dateStr) [\(level.rawValue)] \(caller) \(message)"
-            add(content)
-        }
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        let dateStr = formatter.string(from: now)
+        
+        let fileName = (file as NSString).lastPathComponent // ファイル名のみを抽出
+        let caller = "(\(fileName):\(line)) \(function) - \(message)"
+        
+        let content = "\(dateStr) [\(level.rawValue)] \(caller) \(message)"
+        add(content)
     }
     
     // ファイルへの書き込みメソッドをstaticに
