@@ -14,7 +14,8 @@
 		E5102E572C97F59700A036B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5102E562C97F59700A036B7 /* Assets.xcassets */; };
 		E5102E5A2C97F59700A036B7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = E5102E592C97F59700A036B7 /* Base */; };
 		E5102E602C97F69100A036B7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C7358B2C97D65E008F1101 /* Log.swift */; };
-		E5102E622C97FA1D00A036B7 /* UIFileSharingEnabled.png in Resources */ = {isa = PBXBuildFile; fileRef = E5102E612C97FA1D00A036B7 /* UIFileSharingEnabled.png */; };
+		E514FD102CA0EBCB00CBFD9B /* SSLogTestsThreadSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514FD0F2CA0EBCB00CBFD9B /* SSLogTestsThreadSafe.swift */; };
+		E514FD122CA0EDAC00CBFD9B /* SSLogTestsLoadLargeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514FD112CA0EDAC00CBFD9B /* SSLogTestsLoadLargeLog.swift */; };
 		E5C735762C97D5BB008F1101 /* SSLog.docc in Sources */ = {isa = PBXBuildFile; fileRef = E5C735752C97D5BB008F1101 /* SSLog.docc */; };
 		E5C7357C2C97D5BB008F1101 /* SSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C735712C97D5BB008F1101 /* SSLog.framework */; };
 		E5C735812C97D5BB008F1101 /* SSLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C735802C97D5BB008F1101 /* SSLogTests.swift */; };
@@ -46,7 +47,8 @@
 		E5102E592C97F59700A036B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5102E5B2C97F59700A036B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5102E5F2C97F60000A036B7 /* SSLogSampleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSLogSampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		E5102E612C97FA1D00A036B7 /* UIFileSharingEnabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UIFileSharingEnabled.png; path = ../../../../var/folders/5m/xxdbcvxd5hs7jn21nxj_djhm0000gn/T/TemporaryItems/NSIRD_screencaptureui_pE3zPQ/UIFileSharingEnabled.png; sourceTree = "<group>"; };
+		E514FD0F2CA0EBCB00CBFD9B /* SSLogTestsThreadSafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLogTestsThreadSafe.swift; sourceTree = "<group>"; };
+		E514FD112CA0EDAC00CBFD9B /* SSLogTestsLoadLargeLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLogTestsLoadLargeLog.swift; sourceTree = "<group>"; };
 		E5C735712C97D5BB008F1101 /* SSLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SSLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C735742C97D5BB008F1101 /* SSLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSLog.h; sourceTree = "<group>"; };
 		E5C735752C97D5BB008F1101 /* SSLog.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SSLog.docc; sourceTree = "<group>"; };
@@ -104,7 +106,6 @@
 			children = (
 				E5C7358E2C97D78F008F1101 /* SSLog.podspec */,
 				E5C735922C97DF81008F1101 /* README.md */,
-				E5102E612C97FA1D00A036B7 /* UIFileSharingEnabled.png */,
 				E5C735902C97DF6B008F1101 /* LICENSE */,
 				E5C735732C97D5BB008F1101 /* SSLog */,
 				E5C7357F2C97D5BB008F1101 /* SSLogTests */,
@@ -137,6 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				E5C735802C97D5BB008F1101 /* SSLogTests.swift */,
+				E514FD0F2CA0EBCB00CBFD9B /* SSLogTestsThreadSafe.swift */,
+				E514FD112CA0EDAC00CBFD9B /* SSLogTestsLoadLargeLog.swift */,
 			);
 			path = SSLogTests;
 			sourceTree = "<group>";
@@ -265,7 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5C735932C97DF81008F1101 /* README.md in Resources */,
-				E5102E622C97FA1D00A036B7 /* UIFileSharingEnabled.png in Resources */,
 				E5C735912C97DF6B008F1101 /* LICENSE in Resources */,
 				E5C7358F2C97D78F008F1101 /* SSLog.podspec in Resources */,
 			);
@@ -305,8 +307,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E514FD102CA0EBCB00CBFD9B /* SSLogTestsThreadSafe.swift in Sources */,
 				E5C7358D2C97D65E008F1101 /* Log.swift in Sources */,
 				E5C735812C97D5BB008F1101 /* SSLogTests.swift in Sources */,
+				E514FD122CA0EDAC00CBFD9B /* SSLogTestsLoadLargeLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

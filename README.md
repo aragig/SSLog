@@ -50,4 +50,4 @@ class ViewController: UIViewController {
 ```
 
 Info.plistに以下を設定することで、macOS の Finder からアクセス可能になります。中身を閲覧する際は、一旦 Desktop などへコピーしてから行ってください。
-![](UIFileSharingEnabled.png)
+

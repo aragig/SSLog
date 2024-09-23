@@ -27,7 +27,7 @@ class LogTests: XCTestCase {
         // Debugログのテスト
         Log.d("Debug log test")
         
-        guard let logContent = Log.load() else {
+        guard let logContent = Log.loadLog() else {
             XCTFail("Log file could not be read.")
             return
         }
@@ -39,7 +39,7 @@ class LogTests: XCTestCase {
         // Infoログのテスト
         Log.i("Info log test")
         
-        guard let logContent = Log.load() else {
+        guard let logContent = Log.loadLog() else {
             XCTFail("Log file could not be read.")
             return
         }
@@ -51,7 +51,7 @@ class LogTests: XCTestCase {
         // Warningログのテスト
         Log.w("Warning log test")
         
-        guard let logContent = Log.load() else {
+        guard let logContent = Log.loadLog() else {
             XCTFail("Log file could not be read.")
             return
         }
@@ -63,7 +63,7 @@ class LogTests: XCTestCase {
         // Errorログのテスト
         Log.e("Error log test")
         
-        guard let logContent = Log.load() else {
+        guard let logContent = Log.loadLog() else {
             XCTFail("Log file could not be read.")
             return
         }
@@ -86,7 +86,7 @@ class LogTests: XCTestCase {
         Log.d("First log entry")
         Log.i("Second log entry")
         
-        guard let logContent = Log.load() else {
+        guard let logContent = Log.loadLog() else {
             XCTFail("Log file could not be read.")
             return
         }
