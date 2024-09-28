@@ -16,6 +16,7 @@
 		E5102E602C97F69100A036B7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C7358B2C97D65E008F1101 /* Log.swift */; };
 		E514FD102CA0EBCB00CBFD9B /* SSLogTestsThreadSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514FD0F2CA0EBCB00CBFD9B /* SSLogTestsThreadSafe.swift */; };
 		E514FD122CA0EDAC00CBFD9B /* SSLogTestsLoadLargeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E514FD112CA0EDAC00CBFD9B /* SSLogTestsLoadLargeLog.swift */; };
+		E52F900E2CA7B75B006DBF06 /* SSLogLevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F900D2CA7B75B006DBF06 /* SSLogLevelTests.swift */; };
 		E5C735762C97D5BB008F1101 /* SSLog.docc in Sources */ = {isa = PBXBuildFile; fileRef = E5C735752C97D5BB008F1101 /* SSLog.docc */; };
 		E5C7357C2C97D5BB008F1101 /* SSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C735712C97D5BB008F1101 /* SSLog.framework */; };
 		E5C735812C97D5BB008F1101 /* SSLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C735802C97D5BB008F1101 /* SSLogTests.swift */; };
@@ -49,6 +50,7 @@
 		E5102E5F2C97F60000A036B7 /* SSLogSampleApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSLogSampleApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		E514FD0F2CA0EBCB00CBFD9B /* SSLogTestsThreadSafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLogTestsThreadSafe.swift; sourceTree = "<group>"; };
 		E514FD112CA0EDAC00CBFD9B /* SSLogTestsLoadLargeLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLogTestsLoadLargeLog.swift; sourceTree = "<group>"; };
+		E52F900D2CA7B75B006DBF06 /* SSLogLevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLogLevelTests.swift; sourceTree = "<group>"; };
 		E5C735712C97D5BB008F1101 /* SSLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SSLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C735742C97D5BB008F1101 /* SSLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSLog.h; sourceTree = "<group>"; };
 		E5C735752C97D5BB008F1101 /* SSLog.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = SSLog.docc; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				E5C735802C97D5BB008F1101 /* SSLogTests.swift */,
 				E514FD0F2CA0EBCB00CBFD9B /* SSLogTestsThreadSafe.swift */,
 				E514FD112CA0EDAC00CBFD9B /* SSLogTestsLoadLargeLog.swift */,
+				E52F900D2CA7B75B006DBF06 /* SSLogLevelTests.swift */,
 			);
 			path = SSLogTests;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E514FD102CA0EBCB00CBFD9B /* SSLogTestsThreadSafe.swift in Sources */,
+				E52F900E2CA7B75B006DBF06 /* SSLogLevelTests.swift in Sources */,
 				E5C7358D2C97D65E008F1101 /* Log.swift in Sources */,
 				E5C735812C97D5BB008F1101 /* SSLogTests.swift in Sources */,
 				E514FD122CA0EDAC00CBFD9B /* SSLogTestsLoadLargeLog.swift in Sources */,

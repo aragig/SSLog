@@ -6,7 +6,7 @@ SSLog（Simplify Swift Logger）は、iOSアプリで使えるSwiftで作られ�
 
 ```
 target 'xxxx' do
-  pod 'SSLog', :git => 'https://github.com/aragig/SSLog.git', :tag => '0.1.0'
+  pod 'SSLog', :git => 'https://github.com/aragig/SSLog.git', :tag => '0.3.0'
 end
 ```
 
@@ -21,7 +21,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         Log.enableLog = true
         Log.logFileName = "SSLogSampleApp.log"
-        
+        // Log.logLevel = .warning
+
         Log.d("Debug log test")
         Log.i("Info log test")
         Log.w("Warning log test")

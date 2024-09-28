@@ -9,15 +9,30 @@ import Foundation
 
 public class Log: NSObject {
     
-    public enum Level: String {
+    public enum Level: String, Comparable {
         case debug      = "Debug"
         case info       = "Info"
         case warning    = "Warning"
         case error      = "Error"
+        
+        // レベルの比較
+        public static func < (lhs: Level, rhs: Level) -> Bool {
+            return lhs.priority < rhs.priority
+        }
+        
+        private var priority: Int {
+            switch self {
+            case .debug: return 0
+            case .info: return 1
+            case .warning: return 2
+            case .error: return 3
+            }
+        }
     }
     
     public static var enableLog: Bool = true
     public static var logFileName: String = "simplify-swift.log"
+    public static var logLevel: Level = .debug // ログレベルの追加
 
     // シリアルキューの作成（排他制御用）
     private static let logQueue = DispatchQueue(label: "com.apppppp.SSLog")
@@ -89,6 +104,11 @@ public class Log: NSObject {
 
     // ログの基本メソッドをstaticに
     static func log(_ level: Level, _ message: String, _ file: String, _ line: Int, _ function: String) {
+        // 設定されたログレベル以上のみ出力
+        if level < logLevel {
+            return
+        }
+
         let now = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
