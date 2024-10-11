@@ -153,7 +153,11 @@ public class Log: NSObject {
         }
 
         var logContent = ""
-        let bufferSize = 1024
+        /**
+         bufferSizeを 1024 など小さくして分割して読み込もうとすると、エンコーディングエラーが多発するので大きくとる
+         */
+        let bufferSize = 104_857_600 // 100MBをバイト単位で表現
+        
 
         do {
             let fileHandle = try FileHandle(forReadingFrom: url)
@@ -170,7 +174,9 @@ public class Log: NSObject {
                 if let chunk = String(data: data, encoding: .utf8) {
                     logContent += chunk
                 } else {
-                    print("Error: ファイルのエンコーディングに問題があります")
+                    // エンコーディングエラーが発生した場合、バイトデータを出力
+                    print("エンコーディングエラー: \(data)")
+                    print("バイトデータ: \(data.map { String(format: "%02x", $0) }.joined(separator: " "))")
                     return nil
                 }
             }
