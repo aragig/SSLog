@@ -46,16 +46,20 @@ class LogDetailViewController: UIViewController, UITableViewDelegate, UITableVie
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(searchBar)
 
-        NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        if #available(iOS 11.0, *) {
+            NSLayoutConstraint.activate([
+                searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                
+                tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+                tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+        } else {
+            // Fallback on earlier versions
+        }
 
         if let fileName = fileName {
             loadLogFileContent(fileName: fileName)

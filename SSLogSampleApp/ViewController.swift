@@ -10,8 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let filePrefix = "log_" // ファイル名のプレフィックス
-
 
 
     override func viewDidLoad() {
@@ -32,15 +30,16 @@ class ViewController: UIViewController {
             Log.enableLog = true
             
             // 日付を文字列に変換してログファイル名に使用
-            let logFileName = "\(filePrefix)\(dateFormatter.string(from: date)).log"
+            let logFileName = "\(Log.filePrefix)\(dateFormatter.string(from: date)).log"
 
-            Log.logFileName = logFileName
+            print("\n\n")
+            print(logFileName)
             
             // ログ出力
-            Log.d("Debug log test Debug log test Debug log test Debug log test Debug log test Debug log test Debug log test Debug log test")
-            Log.i("Info log test Info log test Info log test Info log test Info log test Info log test Info log test Info log test Info log test")
-            Log.w("Warning log test Warning log test Warning log test Warning log test Warning log test Warning log test Warning log test")
-            Log.e("Error log test Error log test Error log test Error log test Error log test Error log test Error log test Error log test")
+            Log.d("Debug log test Debug log test Debug log test Debug log test Debug log test Debug log test Debug log test Debug log test", logFileName)
+            Log.i("Info log test Info log test Info log test Info log test Info log test Info log test Info log test Info log test Info log test", logFileName)
+            Log.w("Warning log test Warning log test Warning log test Warning log test Warning log test Warning log test Warning log test", logFileName)
+            Log.e("Error log test Error log test Error log test Error log test Error log test Error log test Error log test Error log test", logFileName)
 
             // 次の日にインクリメント
             date = calendar.date(byAdding: .day, value: 1, to: date)!

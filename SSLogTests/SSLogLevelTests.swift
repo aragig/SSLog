@@ -12,7 +12,7 @@ class SSLogLevelTests: XCTestCase {
     override func setUpWithError() throws {
         // テストごとに呼ばれる前のセットアップ
         Log.enableLog = true
-        Log.logFileName = "test-log.log"
+//        Log.logFileName = "test-log.log"
         Log.deleteLogFile() // テスト前にログファイルを削除
     }
 

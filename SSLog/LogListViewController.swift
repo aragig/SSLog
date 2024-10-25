@@ -12,7 +12,6 @@ public class LogListViewController: UIViewController, UITableViewDelegate, UITab
     // テーブルビューを作成
     let tableView = UITableView()
     var fileList: [String] = []
-    var filePrefix = "log_" // ファイル名のプレフィックス
     
     let utils = LogUtils()
 
@@ -43,7 +42,7 @@ public class LogListViewController: UIViewController, UITableViewDelegate, UITab
 
     func fetchFileList() {
         // ファイルリストを取得
-        utils.fetchFileList(filePrefix: filePrefix) { fList in
+        utils.fetchFileList() { fList in
             print(fList)
             fileList = fList
             tableView.reloadData()
@@ -82,6 +81,7 @@ public class LogListViewController: UIViewController, UITableViewDelegate, UITab
     
     
     // セルを横にスワイプして削除ボタンを表示
+    @available(iOS 11.0, *)
     public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "削除") { [weak self] (action, view, completionHandler) in
             guard let self = self else { return }
@@ -114,7 +114,7 @@ public class LogListViewController: UIViewController, UITableViewDelegate, UITab
             // すべて削除ボタン
             alert.addAction(UIAlertAction(title: "すべて削除", style: .destructive, handler: { [weak self] _ in
                 guard let self = self else { return }
-                utils.cleanupLogFiles(filePrefix: filePrefix) {
+                utils.cleanupLogFiles() {
                     // ファイルリストを再取得
                     self.fetchFileList()
                 } errorHandler: { error in

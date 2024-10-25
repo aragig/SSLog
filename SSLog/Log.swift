@@ -45,7 +45,10 @@ public class Log: NSObject {
     }
     
     public static var enableLog: Bool = true
-    public static var logFileName: String = "simplify-swift.log"
+//    public static var logFileName: String?
+    public static var  filePrefix = "log_" // ファイル名のプレフィックス
+
+    
     public static var logLevel: Level = .debug // ログレベルの追加
 
     // シリアルキューの作成（排他制御用）
@@ -53,17 +56,26 @@ public class Log: NSObject {
 
     // ファイルパスの定義
     // ファイルパスの定義（ファイル名に日付を含める）
-    static func getFileURL() -> URL? {
+    static func getFileURL(_ filename: String? = nil) -> URL? {
 //        let formatter = DateFormatter()
 //        formatter.dateFormat = "yyyy-MM-dd" // 日付をファイル名に
 //        let dateString = formatter.string(from: Date())
-        let fileName = logFileName
-
         guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             print("Log dir error")
             return nil
         }
-        let fileUrl = dir.appendingPathComponent(fileName)
+        
+        var logFileName = filename
+        
+        if logFileName == nil {
+            // 日付フォーマットの設定
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyyMMdd"
+            logFileName = "log_\(dateFormatter.string(from: Date())).log"
+        }
+
+        
+        let fileUrl = dir.appendingPathComponent(logFileName!)
         return fileUrl
     }
 
@@ -92,32 +104,32 @@ public class Log: NSObject {
     }
     
     // ログ出力メソッドをstaticに
-    public static func d(_ message: String, file: String = #file, line: Int = #line, function: String = #function) {
+    public static func d(_ message: String, _ filename: String? = nil, file: String = #file, line: Int = #line, function: String = #function) {
         if enableLog {
-            log(.debug, message, file, line, function)
+            log(.debug, message, filename, file, line, function)
         }
     }
 
-    public static func i(_ message: String, file: String = #file, line: Int = #line, function: String = #function) {
+    public static func i(_ message: String, _ filename: String? = nil, file: String = #file, line: Int = #line, function: String = #function) {
         if enableLog {
-            log(.info, message, file, line, function)
+            log(.info, message, filename, file, line, function)
         }
     }
 
-    public static func w(_ message: String, file: String = #file, line: Int = #line, function: String = #function) {
+    public static func w(_ message: String, _ filename: String? = nil, file: String = #file, line: Int = #line, function: String = #function) {
         if enableLog {
-            log(.warning, message, file, line, function)
+            log(.warning, message, filename, file, line, function)
         }
     }
 
-    public static func e(_ message: String, file: String = #file, line: Int = #line, function: String = #function) {
+    public static func e(_ message: String, _ filename: String? = nil, file: String = #file, line: Int = #line, function: String = #function) {
         if enableLog {
-            log(.error, message, file, line, function)
+            log(.error, message, filename, file, line, function)
         }
     }
 
     // ログの基本メソッドをstaticに
-    static func log(_ level: Level, _ message: String, _ file: String, _ line: Int, _ function: String) {
+    static func log(_ level: Level, _ message: String, _ filename: String? = nil, _ file: String, _ line: Int, _ function: String) {
         // 設定されたログレベル以上のみ出力
         if level < logLevel {
             return
@@ -128,18 +140,18 @@ public class Log: NSObject {
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         let dateStr = formatter.string(from: now)
         
-        let fileName = (file as NSString).lastPathComponent // ファイル名のみを抽出
-        let caller = "(\(fileName):\(line)) \(function)"
+        let fname = (file as NSString).lastPathComponent // ファイル名のみを抽出
+        let caller = "(\(fname):\(line)) \(function)"
         
         let content = "\(dateStr) [\(level.rawValue)] \(caller) - \(message)"
-        add(content)
+        add(content, filename)
         print(content)
     }
     
     // ファイルへの書き込みメソッドをstaticに
-    static func add(_ text: String) {
+    static func add(_ text: String, _ filename: String? = nil) {
         logQueue.sync {
-            guard let url = getFileURL() else {
+            guard let url = getFileURL(filename) else {
                 return
             }
 
