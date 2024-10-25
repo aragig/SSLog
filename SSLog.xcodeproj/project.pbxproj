@@ -142,8 +142,8 @@
 				E5C735752C97D5BB008F1101 /* SSLog.docc */,
 				E5C7358B2C97D65E008F1101 /* Log.swift */,
 				E5DA1E382CCB17AA008EC1C7 /* LogUtils.swift */,
-				E5DA1E322CCB1218008EC1C7 /* LogListViewController.swift */,
 				E5DA1E362CCB1740008EC1C7 /* LogDetailViewController.swift */,
+				E5DA1E322CCB1218008EC1C7 /* LogListViewController.swift */,
 			);
 			path = SSLog;
 			sourceTree = "<group>";

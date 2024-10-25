@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LogDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LogDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     let utils = LogUtils()
 
@@ -16,78 +16,82 @@ class LogDetailViewController: UIViewController, UITableViewDelegate, UITableVie
     var originalLogContent: [String] = [] // 元の全ログ内容を保持
  
     let tableView = UITableView()
+    let searchBar = UISearchBar()
     var selectedFilters = ["Debug", "Info", "Warning", "Error"]
+    var searchText: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // ナビゲーションバーのタイトルをファイル名に設定
         self.title = fileName ?? "ログ詳細"
-        
-        // ナビゲーションバーにフィルターボタンを追加
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "フィルター", style: .plain, target: self, action: #selector(onFilterButtonTapped))
+        self.view.backgroundColor = .systemBackground
 
-        // テーブルビューの設定
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "フィルター", style: .plain, target: self, action: #selector(onFilterButtonTapped))
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = self.view.bounds
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        tableView.estimatedRowHeight = 44 // 推定行の高さ
-        tableView.rowHeight = UITableView.automaticDimension // 自動で行の高さを調整
-        self.view.addSubview(tableView)
-        
-        // ファイルの内容を読み込む
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+
+        searchBar.delegate = self
+        searchBar.placeholder = "検索"
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(searchBar)
+
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+
         if let fileName = fileName {
             loadLogFileContent(fileName: fileName)
         }
     }
+        
     
-    // 元のビューコントローラ内にフィルターボタンの処理を追加
     @objc func onFilterButtonTapped() {
         let filterVC = FilterViewController()
-        filterVC.selectedFilters = selectedFilters // 選択済みのフィルターを設定
+        filterVC.selectedFilters = selectedFilters
         
-        // フィルター適用時の処理
         filterVC.onApplyFilters = { [weak self] filters in
             self?.selectedFilters = filters
-            self?.applyFilter(selectedFilters: filters)
+            self?.applyFilter(selectedFilters: filters, searchText: self?.searchText ?? "")
         }
         
         let navController = UINavigationController(rootViewController: filterVC)
         self.present(navController, animated: true, completion: nil)
     }
     
-    func applyFilter(selectedFilters: [String]) {
-        if selectedFilters.isEmpty {
-            // フィルターが空の場合、元のログデータに戻す
-            logContent = originalLogContent
-        } else {
-            // 元のデータからフィルターを適用
-            logContent = originalLogContent.filter { log in
-                for filter in selectedFilters {
-                    if log.contains(filter) {
-                        return true
-                    }
-                }
-                return false
-            }
+    func applyFilter(selectedFilters: [String], searchText: String) {
+        // フィルターと検索文字列の両方を考慮
+        logContent = originalLogContent.filter { log in
+            let matchesFilter = selectedFilters.isEmpty || selectedFilters.contains { filter in log.contains(filter) }
+            let matchesSearchText = searchText.isEmpty || log.localizedCaseInsensitiveContains(searchText)
+            return matchesFilter && matchesSearchText
         }
         tableView.reloadData()
     }
     
-    // ファイルの内容を読み込んで改行単位で配列に格納
     func loadLogFileContent(fileName: String) {
         utils.loadLogFileContent(fileName: fileName) { contents in
             originalLogContent = contents
             logContent = contents
-            // テーブルビューをリロード
             tableView.reloadData()
         } errorHandler: { error in
             print(error)
         }
     }
 
-    // テーブルビューのセル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return logContent.count
     }
@@ -95,16 +99,11 @@ class LogDetailViewController: UIViewController, UITableViewDelegate, UITableVie
     // テーブルビューのセル設定（ログレベルごとに色を分ける）
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        
-        // 極小のフォントサイズと行を折り返す設定
         cell.textLabel?.font = UIFont.systemFont(ofSize: 10) // 極小フォントサイズ
         cell.textLabel?.numberOfLines = 0 // テキストの折り返しを許可
-        
-        // ログ内容をセルに設定
         let log = logContent[indexPath.row]
         cell.textLabel?.text = log
         
-        // ログレベルによって文字の色を変更
         if log.contains(Log.Level.debug.rawValue) {
             cell.textLabel?.textColor = Log.Level.debug.color
         } else if log.contains(Log.Level.info.rawValue) {
@@ -120,21 +119,13 @@ class LogDetailViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
-    // セルが選択されたときにクリップボードにコピー
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedText = logContent[indexPath.row]
-        
-        // クリップボードにコピー
         UIPasteboard.general.string = selectedText
-        
-        // トーストメッセージを表示
         showToast(message: "コピーしました")
-        
-        // セルの選択状態を解除
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    // トーストメッセージの表示
     func showToast(message: String) {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width / 2 - 75,
                                                y: self.view.frame.size.height - 100,
@@ -150,12 +141,25 @@ class LogDetailViewController: UIViewController, UITableViewDelegate, UITableVie
         toastLabel.clipsToBounds = true
         self.view.addSubview(toastLabel)
         
-        // トーストメッセージを3秒後にフェードアウトして削除
         UIView.animate(withDuration: 0.5, delay: 2.5, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0
         }, completion: { _ in
             toastLabel.removeFromSuperview()
         })
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = searchText
+        applyFilter(selectedFilters: selectedFilters, searchText: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+
+    // スクロール時にキーボードを閉じる
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
     }
 }
 

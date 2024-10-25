@@ -24,6 +24,7 @@ class LogUtils {
             
             // 改行で分割して配列に格納、空白行をフィルタリングして除外
             let contents = content.components(separatedBy: .newlines).filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
+            
             compleation(contents)
         } catch {
             errorHandler("ファイルの読み込みに失敗しました: \(error)")
@@ -41,9 +42,9 @@ class LogUtils {
             // ドキュメントディレクトリ内のファイルを取得
             let files = try fileManager.contentsOfDirectory(atPath: directory.path)
             
-            // プレフィックスでフィルタリング
+            // プレフィックスでフィルタリングし、降順でソート
             let fileList:[String] = files.filter { $0.hasPrefix(filePrefix) }
-            compleation(fileList)
+            compleation(fileList.sorted(by: >))
         } catch {
             errorHandler("ファイルの取得に失敗しました: \(error)")
         }

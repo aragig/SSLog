@@ -12,7 +12,7 @@ class LogListViewController: UIViewController, UITableViewDelegate, UITableViewD
     // テーブルビューを作成
     let tableView = UITableView()
     var fileList: [String] = []
-    let filePrefix = "log_" // ファイル名のプレフィックス
+    var filePrefix = "log_" // ファイル名のプレフィックス
     
     let utils = LogUtils()
 
@@ -20,7 +20,7 @@ class LogListViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         // ビューの背景色を設定
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
         self.title = "ログファイル一覧"
         
         // ナビゲーションバーにゴミ箱ボタンを追加
