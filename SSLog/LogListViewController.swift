@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LogListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+public class LogListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     // テーブルビューを作成
     let tableView = UITableView()
@@ -16,7 +16,7 @@ class LogListViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     let utils = LogUtils()
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         // ビューの背景色を設定
@@ -56,19 +56,19 @@ class LogListViewController: UIViewController, UITableViewDelegate, UITableViewD
 
 
     // テーブルビューのセル数
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fileList.count
     }
 
     // テーブルビューのセル設定
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = fileList[indexPath.row]
         return cell
     }
 
     // セルが選択されたときのイベント
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedFile = fileList[indexPath.row]
         print("選択されたファイル: \(selectedFile)")
         let logDetailViewController = LogDetailViewController()
@@ -82,7 +82,7 @@ class LogListViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     // セルを横にスワイプして削除ボタンを表示
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "削除") { [weak self] (action, view, completionHandler) in
             guard let self = self else { return }
             

@@ -7,10 +7,10 @@
 
 import Foundation
 
-class LogUtils {
+public class LogUtils {
     
     // ファイルの内容を読み込んで改行単位で配列に格納
-    func loadLogFileContent(fileName: String, compleation:([String])->(), errorHandler:(String)->()) {
+    public func loadLogFileContent(fileName: String, compleation:([String])->(), errorHandler:(String)->()) {
         let fileManager = FileManager.default
         let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
 
@@ -32,7 +32,7 @@ class LogUtils {
     }
     
     // ファイルリストの取得
-    func fetchFileList(filePrefix: String, compleation:([String])->(), errorHandler:(String)->()) {
+    public func fetchFileList(filePrefix: String, compleation:([String])->(), errorHandler:(String)->()) {
         let fileManager = FileManager.default
         let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
 
@@ -51,7 +51,7 @@ class LogUtils {
     }
     
     // ログファイルの一括削除
-    func cleanupLogFiles(filePrefix: String, compleation:()->(), errorHandler:(String)->()) {
+    public func cleanupLogFiles(filePrefix: String, compleation:()->(), errorHandler:(String)->()) {
         let fileManager = FileManager.default
         let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
 
@@ -84,7 +84,7 @@ class LogUtils {
         }
     }
     
-    func deleteLogFile(filename: String, compleation:()->(), errorHandler:(String)->()) {
+    public func deleteLogFile(filename: String, compleation:()->(), errorHandler:(String)->()) {
         let fileManager = FileManager.default
             let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
             
