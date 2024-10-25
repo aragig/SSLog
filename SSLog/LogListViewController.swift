@@ -20,7 +20,11 @@ class LogListViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         // ビューの背景色を設定
-        self.view.backgroundColor = .systemBackground
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = .systemBackground
+        } else {
+            self.view.backgroundColor = .white
+        }
         self.title = "ログファイル一覧"
         
         // ナビゲーションバーにゴミ箱ボタンを追加

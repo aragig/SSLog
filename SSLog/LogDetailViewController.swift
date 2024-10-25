@@ -24,7 +24,11 @@ class LogDetailViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         self.title = fileName ?? "ログ詳細"
-        self.view.backgroundColor = .systemBackground
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = .systemBackground
+        } else {
+            self.view.backgroundColor = .white
+        }
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "フィルター", style: .plain, target: self, action: #selector(onFilterButtonTapped))
         
