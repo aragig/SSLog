@@ -26,6 +26,12 @@
 		E5C7358F2C97D78F008F1101 /* SSLog.podspec in Resources */ = {isa = PBXBuildFile; fileRef = E5C7358E2C97D78F008F1101 /* SSLog.podspec */; };
 		E5C735912C97DF6B008F1101 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E5C735902C97DF6B008F1101 /* LICENSE */; };
 		E5C735932C97DF81008F1101 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E5C735922C97DF81008F1101 /* README.md */; };
+		E5DA1E342CCB123A008EC1C7 /* LogListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DA1E322CCB1218008EC1C7 /* LogListViewController.swift */; };
+		E5DA1E352CCB127F008EC1C7 /* LogListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DA1E322CCB1218008EC1C7 /* LogListViewController.swift */; };
+		E5DA1E372CCB1740008EC1C7 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DA1E362CCB1740008EC1C7 /* LogDetailViewController.swift */; };
+		E5DA1E392CCB17AA008EC1C7 /* LogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DA1E382CCB17AA008EC1C7 /* LogUtils.swift */; };
+		E5DA1E3A2CCB1874008EC1C7 /* LogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DA1E382CCB17AA008EC1C7 /* LogUtils.swift */; };
+		E5DA1E3B2CCB1D74008EC1C7 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DA1E362CCB1740008EC1C7 /* LogDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +66,9 @@
 		E5C7358E2C97D78F008F1101 /* SSLog.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SSLog.podspec; sourceTree = "<group>"; };
 		E5C735902C97DF6B008F1101 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E5C735922C97DF81008F1101 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E5DA1E322CCB1218008EC1C7 /* LogListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogListViewController.swift; sourceTree = "<group>"; };
+		E5DA1E362CCB1740008EC1C7 /* LogDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
+		E5DA1E382CCB17AA008EC1C7 /* LogUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +141,9 @@
 				E5C735742C97D5BB008F1101 /* SSLog.h */,
 				E5C735752C97D5BB008F1101 /* SSLog.docc */,
 				E5C7358B2C97D65E008F1101 /* Log.swift */,
+				E5DA1E382CCB17AA008EC1C7 /* LogUtils.swift */,
+				E5DA1E322CCB1218008EC1C7 /* LogListViewController.swift */,
+				E5DA1E362CCB1740008EC1C7 /* LogDetailViewController.swift */,
 			);
 			path = SSLog;
 			sourceTree = "<group>";
@@ -290,9 +302,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5DA1E3A2CCB1874008EC1C7 /* LogUtils.swift in Sources */,
+				E5DA1E3B2CCB1D74008EC1C7 /* LogDetailViewController.swift in Sources */,
 				E5102E522C97F59600A036B7 /* ViewController.swift in Sources */,
 				E5102E4E2C97F59600A036B7 /* AppDelegate.swift in Sources */,
 				E5102E602C97F69100A036B7 /* Log.swift in Sources */,
+				E5DA1E342CCB123A008EC1C7 /* LogListViewController.swift in Sources */,
 				E5102E502C97F59600A036B7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,7 +316,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5DA1E392CCB17AA008EC1C7 /* LogUtils.swift in Sources */,
+				E5DA1E372CCB1740008EC1C7 /* LogDetailViewController.swift in Sources */,
 				E5C7358C2C97D65E008F1101 /* Log.swift in Sources */,
+				E5DA1E352CCB127F008EC1C7 /* LogListViewController.swift in Sources */,
 				E5C735762C97D5BB008F1101 /* SSLog.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

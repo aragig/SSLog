@@ -5,7 +5,7 @@
 //  Created by Toshihiko Arai on 2024/09/16.
 //
 
-import Foundation
+import UIKit
 
 public class Log: NSObject {
     
@@ -14,6 +14,20 @@ public class Log: NSObject {
         case info       = "Info"
         case warning    = "Warning"
         case error      = "Error"
+        
+        // ログレベルに対応する色を返す
+        var color: UIColor {
+            switch self {
+            case .debug:
+                return UIColor.gray
+            case .info:
+                return UIColor.blue
+            case .warning:
+                return UIColor.orange
+            case .error:
+                return UIColor.red
+            }
+        }
         
         // レベルの比較
         public static func < (lhs: Level, rhs: Level) -> Bool {
